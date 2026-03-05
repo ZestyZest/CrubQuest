@@ -1,4 +1,3 @@
-
 namespace Crub
 {
     public class Dog
