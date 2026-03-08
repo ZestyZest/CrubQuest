@@ -1,0 +1,11 @@
+{
+  "id": "town_square",
+  "name": "Town Square",
+  "art_file": "town_square",
+  "description": "The heart of the settlement. Merchants hawk their wares, adventurers nurse their wounds, and somewhere a dog is barking at nothing.",
+  "ambient_text": "A child runs past, nearly knocking you over.",
+  "encounter_chance": 0.0,
+  "possible_encounters": [],
+  "exits": [],
+  "events": []
+}
