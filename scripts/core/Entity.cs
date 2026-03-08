@@ -1,4 +1,4 @@
-public abstract class Entity
+public abstract partial class Entity : Godot.RefCounted
 {
     public string Name { get; set; } = "";
     public int MaxHP { get; set; }

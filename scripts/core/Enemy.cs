@@ -1,4 +1,4 @@
-public class Enemy : Entity
+public partial class Enemy : Entity
 {
     public string Id { get; set; } = "";
     public string Description { get; set; } = "";

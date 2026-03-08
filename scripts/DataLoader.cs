@@ -1,7 +1,7 @@
 using Godot;
 using System.Text.Json;
 
-public static class DataLoader
+public partial class DataLoader : Godot.Node
 {
 	private static readonly JsonSerializerOptions Options = new()
 	{
@@ -11,7 +11,9 @@ public static class DataLoader
 	private static SceneData? _townSquare;
 	private static MonsterData? _goblin;
 
-	public static void LoadAll()
+	public override void _Ready() => LoadAll();
+
+	private void LoadAll()
 	{
 		_townSquare = LoadFile<SceneData>("res://data/scenes/town_square.json");
 		_goblin     = LoadFile<MonsterData>("res://data/monsters/goblin.json");

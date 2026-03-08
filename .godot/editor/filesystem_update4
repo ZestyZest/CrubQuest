@@ -1,3 +1,8 @@
 res://main.tscn
-res://obj/Debug/net7.0/CrubQuest.AssemblyInfo.cs
-res://scripts/DataLoader.cs
+res://data/scenes/town_square.json
+res://data/monsters/goblin.json
+res://art/scenes/town_square.txt
+res://scripts/core/Player.cs
+res://scripts/core/Entity.cs
+res://scripts/godot/GameManager.gd
+res://scripts/godot/AsciiRenderer.gd

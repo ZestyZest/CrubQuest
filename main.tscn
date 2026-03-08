@@ -1,3 +1,25 @@
 [gd_scene format=3 uid="uid://sjsk3m2dyu2n"]
 
-[node name="Main" type="Node2D" unique_id=1277790375]
+[ext_resource type="Script" uid="uid://dw7vxfonfk4vs" path="res://scripts/godot/Main.gd" id="1_main"]
+[ext_resource type="FontFile" uid="uid://cauo8yx0caswt" path="res://assets/font/JetBrainsMono-Bold.ttf" id="2_font"]
+
+[node name="Main" type="Control" unique_id=239510236]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="ArtLabel" type="RichTextLabel" parent="." unique_id=1590655527]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_font")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+scroll_active = false
