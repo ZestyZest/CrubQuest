@@ -1,0 +1,25 @@
+{
+  "id": "goblin",
+  "name": "Scrawny Goblin",
+  "art_file": "goblin",
+  "description": "A hunched, yellow-skinned creature with too many teeth.",
+  "spawn_scenes": ["dark_forest_entrance"],
+  "stats": {
+	"max_hp": 28,
+	"attack": 8,
+	"defense": 3,
+	"speed": 12,
+	"crit_chance": 5,
+	"evasion": 8
+  },
+  "attack_ids": [],
+  "loot": {
+	"xp_reward": 40,
+	"gold_min": 2,
+	"gold_max": 8,
+	"item_drops": []
+  },
+  "is_boss": false,
+  "defeat_text": "The goblin crumples with a wheeze.",
+  "flee_text": "The goblin bolts into the undergrowth, shrieking."
+}
