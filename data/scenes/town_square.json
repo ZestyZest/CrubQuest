@@ -6,6 +6,14 @@
   "ambient_text": "A child runs past, nearly knocking you over.",
   "encounter_chance": 0.0,
   "possible_encounters": [],
-  "exits": [],
+	"exits": [
+	  {
+		"id": "exit_to_forest",
+		"label": "Head toward the Dark Forest",
+		"destination_scene_id": "dark_forest_entrance",
+		"encounter_chance": 0.0,
+		"requires_flag": ""
+	  }
+	],
   "events": []
 }
