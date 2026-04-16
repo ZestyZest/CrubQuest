@@ -15,16 +15,17 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DataLoader="*res://scripts/DataLoader.cs"
+SceneManager="*uid://dpfwq673jgr2n"
+GameManager="*res://scripts/godot/GameManager.gd"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-
-[autoload]
-
-DataLoader="*res://scripts/DataLoader.cs"
-GameManager="*res://scripts/godot/GameManager.gd"
 
 [dotnet]
 

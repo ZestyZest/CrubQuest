@@ -1,0 +1,36 @@
+{
+  "id": "dark_forest_entrance",
+  "name": "Dark Forest Entrance",
+  "art_file": "dark_forest_entrance",
+  "description": "The trees close in around you. The air smells of rot and something older. Branches claw at your cloak like skeletal fingers.",
+  "ambient_text": "Somewhere deep in the dark, something breathes.",
+  "encounter_chance": 0.0,
+  "possible_encounters": ["goblin"],
+  "exits": [
+	{
+	  "id": "exit_to_town",
+	  "label": "Return to Town Square",
+	  "destination_scene_id": "town_square",
+	  "encounter_chance": 0.35,
+	  "requires_flag": ""
+	}
+  ],
+  "events": [
+	{
+	  "id": "evt_mysterious_shrine",
+	  "label": "Examine the crumbling shrine",
+	  "one_time": true,
+	  "requires_flag": "",
+	  "sets_flag": "shrine_examined",
+	  "dialogue": [
+		"You brush moss from the stone face. Its eyes are wrong — too many, too knowing.",
+        "A cold certainty settles in your chest: someone worshipped something terrible here."
+	  ],
+	  "reward": {
+		"xp": 25,
+		"gold": 0,
+		"item_id": ""
+	  }
+	}
+  ]
+}

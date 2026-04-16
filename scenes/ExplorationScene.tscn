@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dkdxvul7qpf6u"]
+
+[ext_resource type="Script" uid="uid://wmvvl3l1vmsr" path="res://scripts/godot/ExplorationUI.gd" id="1_vrkq3"]
+[ext_resource type="FontFile" uid="uid://cauo8yx0caswt" path="res://assets/font/JetBrainsMono-Bold.ttf" id="1_yno01"]
+
+[node name="ExplorationScene" type="Control" unique_id=421246]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vrkq3")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1672922644]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1770855672]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ArtLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1829338071]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("1_yno01")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+scroll_active = false
+
+[node name="SceneNameLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=430492618]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_yno01")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+scroll_active = false
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=2086854804]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("1_yno01")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1633493570]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
