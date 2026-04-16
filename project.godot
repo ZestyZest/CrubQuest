@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DataLoader="*res://scripts/DataLoader.cs"
+SceneManager="*uid://dpfwq673jgr2n"
 GameManager="*res://scripts/godot/GameManager.gd"
 
 [display]
