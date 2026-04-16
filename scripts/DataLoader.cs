@@ -1,50 +1,55 @@
 using Godot;
 using System.Text.Json;
 
-public partial class DataLoader : Godot.Node
+public partial class DataLoader : Node
 {
 	private static readonly JsonSerializerOptions Options = new()
 	{
 		PropertyNameCaseInsensitive = true
 	};
 
-	private static SceneData? _townSquare;
-	private static MonsterData? _goblin;
+	private static readonly Dictionary<string, SceneData> _scenes = new();
+	private static readonly Dictionary<string, MonsterData> _monsters = new();
 
 	public override void _Ready() => LoadAll();
 
 	private void LoadAll()
 	{
-		_townSquare = LoadFile<SceneData>("res://data/scenes/town_square.json");
-		_goblin     = LoadFile<MonsterData>("res://data/monsters/goblin.json");
+		LoadDirectory<SceneData>("res://data/scenes/", _scenes);
+		LoadDirectory<MonsterData>("res://data/monsters/", _monsters);
 
-		// Phase 1 verification — print to Godot Output panel
-		GD.Print("=== DataLoader: Phase 1 Load ===");
-		GD.Print($"Scene loaded:   {_townSquare?.Name} (id: {_townSquare?.Id})");
-		GD.Print($"Monster loaded: {_goblin?.Name} (id: {_goblin?.Id}, HP: {_goblin?.Stats.MaxHp})");
+		GD.Print("=== DataLoader: Phase 2 Load ===");
+		GD.Print($"Scenes loaded:   {_scenes.Count}");
+		GD.Print($"Monsters loaded: {_monsters.Count}");
 	}
 
-	private static T? LoadFile<T>(string godotPath)
+	private static void LoadDirectory<T>(string dirPath, Dictionary<string, T> cache)
+		where T : IIdentifiable
 	{
-		if (!Godot.FileAccess.FileExists(godotPath))
+		using var dir = DirAccess.Open(dirPath);
+		if (dir == null)
 		{
-			GD.PrintErr($"DataLoader: file not found — {godotPath}");
-			return default;
+			GD.PrintErr($"DataLoader: directory not found — {dirPath}");
+			return;
 		}
-		using var file = Godot.FileAccess.Open(godotPath, Godot.FileAccess.ModeFlags.Read);
-		return JsonSerializer.Deserialize<T>(file.GetAsText(), Options);
+
+		dir.ListDirBegin();
+		string fileName;
+		while ((fileName = dir.GetNext()) != "")
+		{
+			if (!fileName.EndsWith(".json")) continue;
+			var fullPath = dirPath + fileName;
+			using var file = Godot.FileAccess.Open(fullPath, Godot.FileAccess.ModeFlags.Read);
+			var data = JsonSerializer.Deserialize<T>(file.GetAsText(), Options);
+			if (data != null) cache[data.Id] = data;
+		}
+		dir.ListDirEnd();
 	}
 
-	public static SceneData GetScene(string id)
-	{
-		// Phase 1: only town_square is loaded
-		if (id == "town_square" && _townSquare != null) return _townSquare;
-		throw new KeyNotFoundException($"Scene not found: {id}");
-	}
+	public static SceneData GetScene(string id) => _scenes[id];
+	public static MonsterData GetMonster(string id) => _monsters[id];
+	public static bool SceneExists(string id) => _scenes.ContainsKey(id);
 
-	public static MonsterData GetMonster(string id)
-	{
-		if (id == "goblin" && _goblin != null) return _goblin;
-		throw new KeyNotFoundException($"Monster not found: {id}");
-	}
+	public static List<MonsterData> GetMonstersForScene(string sceneId) =>
+		_monsters.Values.Where(m => m.SpawnScenes.Contains(sceneId)).ToList();
 }
