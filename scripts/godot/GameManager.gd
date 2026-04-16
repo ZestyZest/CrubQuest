@@ -12,4 +12,4 @@ func _ready() -> void:
 	print("GameManager ready. Player: ", player.Name)
 
 	# Boot into the player's starting scene
-	SceneManager.go_to_scene(player.CurrentSceneId)
+	SceneManager.go_to_scene.call_deferred(player.CurrentSceneId)
